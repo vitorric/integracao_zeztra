@@ -1,10 +1,10 @@
-import { config } from 'dotenv';
-import { resolve } from 'path';
+const dotenv = require('dotenv');
+const path = require('path');
 
 const env = `.env.${process.env.NODE_ENV}`;
 
-const pathEnv = resolve(__dirname, '../../', env);
+const pathEnv = path.resolve(__dirname, '../', env);
 
-config({
+dotenv.config({
   path: pathEnv,
 });
