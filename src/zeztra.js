@@ -38,7 +38,6 @@ exports.createBilling = async () => {
             }]
         }
 
-
         const { data } = await axios.post(url, body, axiosConfig());
         const { success, payload } = data;
 
@@ -60,7 +59,55 @@ exports.createBilling = async () => {
     }
 }
 
-function getBillingByBillingId() { }
-function getBillingByCustomId() { }
-function listBilling() { }
-function listBillingRuleProfiles() { }
+exports.getBillingByBillingId = async (billingId) => {
+    try {
+        const url = `${urlAPIZeztra}/billing/get/${billingId}`
+
+        const { data } = await axios.get(url, axiosConfig());
+        const { success, payload } = data;
+
+        if (!success) {
+            return {
+                error: true,
+                billing: false,
+            }
+        }
+
+        if (success) {
+            return {
+                error: false,
+                billing: payload,
+            }
+        }
+    } catch (err) {
+        console.log(JSON.stringify(err.response.data))
+    }
+};
+
+exports.getBillingByCustomId = async (customId) => {
+    try {
+        const url = `${urlAPIZeztra}/billing/get/${customId}/customId`
+
+        const { data } = await axios.get(url, axiosConfig());
+        const { success, payload } = data;
+
+        if (!success) {
+            return {
+                error: true,
+                billing: false,
+            }
+        }
+
+        if (success) {
+            return {
+                error: false,
+                billing: payload,
+            }
+        }
+    } catch (err) {
+        console.log(JSON.stringify(err.response.data))
+    }
+};
+
+exports.listBilling = async () => { };
+exports.listBillingRuleProfiles = async () => { };
