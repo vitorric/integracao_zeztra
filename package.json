@@ -4,5 +4,28 @@
     "dotenv": "^16.0.3",
     "express": "^4.18.1",
     "morgan": "^1.10.0"
-  }
+  },
+  "name": "integration-zeztra",
+  "version": "1.0.0",
+  "description": "API com exemplos de integração com a empresa Zeztra.",
+  "main": "index.js",
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  },
+  "scripts": {
+    "start": "NODE_ENV=local nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vitorric/integracao_zeztra.git"
+  },
+  "keywords": [
+    "Zeztra"
+  ],
+  "author": "Vitor Ricardo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vitorric/integracao_zeztra/issues"
+  },
+  "homepage": "https://github.com/vitorric/integracao_zeztra#readme"
 }
