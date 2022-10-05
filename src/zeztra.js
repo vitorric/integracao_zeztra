@@ -112,7 +112,7 @@ exports.getBillingByCustomId = async (customId) => {
 exports.listBilling = async (page, rowsPerPage, status) => {
     try {
         const url = `${urlAPIZeztra}/billing/list`
-        
+
         const { headers } = axiosConfig();
         const { data } = await axios.get(url, {
             headers,
@@ -139,4 +139,34 @@ exports.listBilling = async (page, rowsPerPage, status) => {
         console.log(JSON.stringify(err.response.data))
     }
 };
-exports.listBillingRuleProfiles = async () => { };
+
+exports.listBillingRuleProfile = async (page, rowsPerPage, status) => {
+    try {
+        const url = `${urlAPIZeztra}/billing-rule/list`
+
+        const { headers } = axiosConfig();
+        const { data } = await axios.get(url, {
+            headers,
+            params: {
+                page, rowsPerPage, status
+            }
+        });
+        const { success, payload } = data;
+
+        if (!success) {
+            return {
+                error: true,
+                billing: false,
+            }
+        }
+
+        if (success) {
+            return {
+                error: false,
+                billing: payload,
+            }
+        }
+    } catch (err) {
+        console.log(JSON.stringify(err.response.data))
+    }
+};

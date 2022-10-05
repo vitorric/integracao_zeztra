@@ -1,4 +1,4 @@
-const { createBilling, getBillingByBillingId, getBillingByCustomId, listBilling } = require('./zeztra');
+const { createBilling, getBillingByBillingId, getBillingByCustomId, listBilling, listBillingRuleProfile } = require('./zeztra');
 
 const testZeztraFlow = async () => {
     const billingCreated = await createBilling();
@@ -17,10 +17,14 @@ const testZeztraFlow = async () => {
     const billing2 = await getBillingByCustomId(customId);
     console.log('----------------Resultado billing2----------------');
     console.log('Resultado billing2', JSON.stringify(billing2));
-    
+
     const listBillings = await listBilling(1, 2, 'PENDING');
     console.log('----------------Resultado listBillings----------------');
     console.log('Resultado listBillings', JSON.stringify(listBillings));
+
+    const listBillingRuleProfiles = await listBillingRuleProfile(1, 2, true);
+    console.log('----------------Resultado listBillingRuleProfiles----------------');
+    console.log('Resultado listBillingRuleProfiles', JSON.stringify(listBillingRuleProfiles));
 }
 
 testZeztraFlow();
