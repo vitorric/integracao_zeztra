@@ -22,6 +22,8 @@ exports.createBilling = async () => {
                 dueDate: new Date().toISOString().split('T')[0],
                 sendCommunication: false,
                 amount: 1000,
+                numberRecurrence: 16,
+                toCreateAtDay: 1,
                 payer: {
                     cpfCnpj: '46822886796',
                     name: 'Vitor Ricardo',
@@ -56,6 +58,10 @@ exports.createBilling = async () => {
         }
     } catch (err) {
         console.log(JSON.stringify(err.response.data))
+        return {
+            error: false,
+            billing: (err.response.data),
+        }
     }
 }
 
@@ -81,6 +87,10 @@ exports.getBillingByBillingId = async (billingId) => {
         }
     } catch (err) {
         console.log(JSON.stringify(err.response.data))
+        return {
+            error: false,
+            billing: (err.response.data),
+        }
     }
 };
 
@@ -106,6 +116,10 @@ exports.getBillingByCustomId = async (customId) => {
         }
     } catch (err) {
         console.log(JSON.stringify(err.response.data))
+        return {
+            error: false,
+            billing: (err.response.data),
+        }
     }
 };
 
@@ -137,6 +151,10 @@ exports.listBilling = async (page, rowsPerPage, status) => {
         }
     } catch (err) {
         console.log(JSON.stringify(err.response.data))
+        return {
+            error: false,
+            billing: (err.response.data),
+        }
     }
 };
 
@@ -168,5 +186,9 @@ exports.listBillingRuleProfile = async (page, rowsPerPage, status) => {
         }
     } catch (err) {
         console.log(JSON.stringify(err.response.data))
+        return {
+            error: false,
+            billing: (err.response.data),
+        }
     }
 };
